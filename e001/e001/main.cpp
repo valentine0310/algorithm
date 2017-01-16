@@ -1,31 +1,28 @@
 ﻿#include <iostream>
-#include <map>
+#include <string>
 using namespace std;
+
+bool checkDup(string str)
+{
+	bool b[256] ={ 0 };
+
+	for (int i=0; i<str.length(); i++)
+	{
+		if (b[str.at(i)] == false)
+			b[str.at(i)] = true;
+		else
+			return true;
+	}
+	return false;
+}
 
 int main()
 {
-	char *str = "1abcdefghijklmn12347";
-	map<char, int> m;
-	int nLen = strlen(str);
-	bool bFind = false;
 
-	for(int i = 0; i<nLen; i++)
-	{
-		map<char, int>::iterator it = m.find(str[i]);
+	string str;
+	cin >> str;
 
-		if (it == m.end())
-			m.insert(pair<char, int>(str[i], i));
-		else
-		{
-			bFind = true;
-			break;
-		}
-	}
-
-	if (bFind)
-		cout << "중복" << endl;
-	else
-		cout << "미중복" << endl;
+	cout << (checkDup(str) ? "중복" : "미중복") << endl;
 
 	return 0;
 }

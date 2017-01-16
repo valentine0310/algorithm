@@ -7,3 +7,4 @@ debug/
 *.opendb
 *.filters
 *.db
+*.TMP
